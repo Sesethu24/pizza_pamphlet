@@ -9,14 +9,69 @@
 </head>
 
 <body>
+
   <h1>Perfect Pizza</h1>
+
+<div class="container" 
+  x-data="{ smallTotalPrice:0.00,
+          smallQty:0,
+          mediumTotalPrice:0.00,
+          mediumQty:0,
+          largeTotalPrice:0.00,
+          largeQty:0,
+          totalPrice:0.00
+        }">
+
+ <div class="cartTotal " >
+    <strong>Total price</strong>  
+    <span class="cartTotalPrice">0.00</span>
+    <a href="#">
+      <img src="shopping-cart.png" alt="">
+    </a>
+  </div>
+
+  
+  <div class="cart" >
+    <h3>Shopping Cart</h3>
+    <img src="shopping-cart.png" alt="">
+
+      <table>
+        <tr>
+          <th>Type</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <!-- <th>Add Or Remove</th> -->
+      </tr>
+        <tr>
+          <td><strong>Small pizzas total:</strong></td>
+          <td><span x-text="smallTotalPrice">0.00</span></td>
+          <td><span x-text="smallQty">0</span></td>
+          <!-- <td><span class="yjikj">0.00</span></td> -->
+       </tr>
+
+        <tr>
+          <td><strong>Medium pizzas total:</strong></td>
+          <td><span x-text="mediumTotalPrice">0.00</span></td>
+          <td><span x-text="mediumQty">0</span></td>
+         </tr>
+
+        <tr>
+          <td><strong>Large pizza total:</strong></td>
+          <td><span x-text="largeTotalPrice">0.00</span></td>
+          <td><span x-text="largeQty">0</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>Total price</strong></td>
+          <td><span class="totalPrice">0.00</span></td>
+        </tr>
+      </table>
+  </div>
   <div class="specials">
 
-    <div class="medium" x-data="{ title: 'Medium Pizza' }">
-      <p x-text="title"></p>
-      <div x-data="{imageUrl: ''}">
-        <img id='small'
-          src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg" />
+    <!-- Medium pizza div -->
+    <div class="medium">
+      <img id='small' src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg" />
         <h2>Medium Pizza</h2>
         <h3>R78.99</h3>
         <i>
@@ -25,13 +80,13 @@
           3 or less other toppings.
         </i>
         
-      </div>
-      <button x-on:click="alert">Add to Cart</button>
+          <button @click="mediumQty++, mediumTotalPrice+=78.99">Add to Cart</button>
+
     </div>
-    <div class="large" x-data="{ title: 'Large Pizza' }">
-      <p x-text="title"></p>
-      <div x-data="{imageUrl: ''}">
-        <img id='small'
+
+    <!-- Large pizza div -->
+    <div class="large" >
+      <img id='small'
           src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg" />
         <h2>Large Pizza</h2>
         <h3>R114.99</h3>
@@ -40,12 +95,11 @@
           3 meat toppings max.
           3 or less other toppings.
         </i>
+        <button @click="largeQty++, largeTotalPrice+=114.99">Add to Cart</button>
       </div>
-      <button x-on:click="alert">Add to Cart</button>
-    </div>
-    <div class="small" x-data="{ title: 'Small Pizza' }">
-      <p x-text="title"></p>
-      <div x-data="{imageUrl: ''}">
+      
+  
+    <div class="small">
         <img id='small'
           src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg" />
         <h2>Small Pizza</h2>
@@ -57,9 +111,8 @@
             <li>3 or less other toppings.</li>
           </ul>
         </i>
-      </div>
-      <button x-on:click="alert">Add to Cart</button>
-    </div>
+     <button @click="smallQty++, smallTotalPrice+=48.99, totalPrice+=smallTotalPrice*smallQty">Add to Cart</button>
+    </div> 
   </div>
   <div class="footer">
     <div class="contact">
@@ -77,6 +130,7 @@
       8000
     </div>
   </div>
+</div>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 </body>
 
