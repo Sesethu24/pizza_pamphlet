@@ -12,19 +12,23 @@
 
   <h1>Perfect Pizza</h1>
 
-<div class="container" 
-  x-data="{ smallTotalPrice:0.00,
+<div class="container">
+
+  <div x-data="{ smallTotalPrice:0.00,
           smallQty:0,
           mediumTotalPrice:0.00,
           mediumQty:0,
           largeTotalPrice:0.00,
           largeQty:0,
-          totalPrice:0.00
+          total() {
+            return this.smallTotalPrice + this.mediumTotalPrice + this.largeTotalPrice
+          },
+
         }">
 
  <div class="cartTotal " >
     <strong>Total price</strong>  
-    <span class="cartTotalPrice">0.00</span>
+    <span class="cartTotalPrice" x-text="total() <= 0 ? '0.00' : total().toFixed(2)">0.00</span>
     <a href="#">
       <img src="shopping-cart.png" alt="">
     </a>
@@ -63,7 +67,7 @@
 
         <tr>
           <td><strong>Total price</strong></td>
-          <td><span class="totalPrice">0.00</span></td>
+          <td><span class="totalPrice"  x-text="total() <= 0 ? '0.00' : total().toFixed(2)">0.00</span></td>
         </tr>
       </table>
   </div>
@@ -98,7 +102,7 @@
         <button @click="largeQty++, largeTotalPrice+=114.99">Add to Cart</button>
       </div>
       
-  
+     <!-- small pizza div -->
     <div class="small">
         <img id='small'
           src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg" />
@@ -111,9 +115,12 @@
             <li>3 or less other toppings.</li>
           </ul>
         </i>
-     <button @click="smallQty++, smallTotalPrice+=48.99, totalPrice+=smallTotalPrice*smallQty">Add to Cart</button>
+     <button @click="smallQty++, smallTotalPrice+=48.99">Add to Cart</button>
     </div> 
   </div>
+  </div>
+
+  <!-- footer -->
   <div class="footer">
     <div class="contact">
       <strong>Contact us at:</strong>
