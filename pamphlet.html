@@ -48,20 +48,20 @@
       </tr>
         <tr>
           <td><strong>Small pizzas total:</strong></td>
-          <td><span x-text="smallTotalPrice">0.00</span></td>
+          <td><span x-text="smallTotalPrice.toFixed(2)">0.00</span></td>
           <td><span x-text="smallQty">0</span></td>
           <!-- <td><span class="yjikj">0.00</span></td> -->
        </tr>
 
         <tr>
           <td><strong>Medium pizzas total:</strong></td>
-          <td><span x-text="mediumTotalPrice">0.00</span></td>
+          <td><span x-text="mediumTotalPrice.toFixed(2)">0.00</span></td>
           <td><span x-text="mediumQty">0</span></td>
          </tr>
 
         <tr>
           <td><strong>Large pizza total:</strong></td>
-          <td><span x-text="largeTotalPrice">0.00</span></td>
+          <td><span x-text="largeTotalPrice.toFixed(2)">0.00</span></td>
           <td><span x-text="largeQty">0</span></td>
         </tr>
 
@@ -84,7 +84,8 @@
           3 or less other toppings.
         </i>
         
-          <button @click="mediumQty++, mediumTotalPrice+=78.99">Add to Cart</button>
+          <button @click="mediumQty++, mediumTotalPrice+=78.99"> + </button>
+          <button @click="mediumQty--, mediumTotalPrice-=78.99"> -</button>
 
     </div>
 
@@ -99,7 +100,9 @@
           3 meat toppings max.
           3 or less other toppings.
         </i>
-        <button @click="largeQty++, largeTotalPrice+=114.99">Add to Cart</button>
+        <br>
+        <button @click="largeQty++, largeTotalPrice+=114.99"> + </button>
+        <button @click="largeQty--, largeTotalPrice-=114.99"> - </button>
       </div>
       
      <!-- small pizza div -->
@@ -115,7 +118,8 @@
             <li>3 or less other toppings.</li>
           </ul>
         </i>
-     <button @click="smallQty++, smallTotalPrice+=48.99">Add to Cart</button>
+     <button @click="smallQty++, smallTotalPrice+=48.99"> + </button>
+     <button @click="smallQty--, smallTotalPrice-=48.99"> - </button>
     </div> 
   </div>
   </div>
